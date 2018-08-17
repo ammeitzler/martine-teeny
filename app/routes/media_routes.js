@@ -4,11 +4,15 @@ module.exports = function(app, db) {
 
   app.get("/media", function(req, res, next) {
     db.collection("media_data", function(err, result){
-        result.find({}).limit(10).toArray(function(err, data){
+        result.find({}).sort({_id: -1}).limit(10).toArray(function(err, data){
           res.json(data);
       })
     });
   });
+
+  // collection.find({ 'category_id': 10 }).sort({_id: -1}).limit(10, function (e, d) {})
+// var query = ModelName.find({}, null, {limit: 10, sort: {'epoch': -1}});
+
 
   app.delete('/media/:id', (req, res) => {
     const id = req.params.id;
