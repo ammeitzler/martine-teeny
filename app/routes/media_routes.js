@@ -4,7 +4,7 @@ module.exports = function(app, db) {
 
   app.get("/media", function(req, res, next) {
     db.collection("media_data", function(err, result){
-        result.find({}).toArray(function(err, data){
+        result.find({}).limit(10).toArray(function(err, data){
           res.json(data);
       })
     });
