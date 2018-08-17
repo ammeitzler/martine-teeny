@@ -10,10 +10,6 @@ module.exports = function(app, db) {
     });
   });
 
-  // collection.find({ 'category_id': 10 }).sort({_id: -1}).limit(10, function (e, d) {})
-// var query = ModelName.find({}, null, {limit: 10, sort: {'epoch': -1}});
-
-
   app.delete('/media/:id', (req, res) => {
     const id = req.params.id;
     const details = { '_id': new ObjectID(id) };
